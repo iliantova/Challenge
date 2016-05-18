@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Category" syncable="YES">
+        <attribute name="idCategory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mysubcategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubCategory" inverseName="subcategory" inverseEntity="SubCategory" syncable="YES"/>
+    </entity>
+    <entity name="SubCategory" syncable="YES">
+        <attribute name="cover" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mysubsubcategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubSubCategory" inverseName="subsubcategory" inverseEntity="SubSubCategory" syncable="YES"/>
+        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="mysubcategory" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="SubSubCategory" syncable="YES">
+        <attribute name="idsubsubcategory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subsubcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubCategory" inverseName="mysubsubcategory" inverseEntity="SubCategory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-432" positionY="-162" width="128" height="90"/>
+        <element name="SubCategory" positionX="-405" positionY="-0" width="128" height="120"/>
+        <element name="SubSubCategory" positionX="-398" positionY="171" width="128" height="90"/>
+    </elements>
+</model>
