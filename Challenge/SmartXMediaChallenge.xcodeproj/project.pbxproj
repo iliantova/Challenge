@@ -17,6 +17,7 @@
 		BF8129BF1CED03B700A7F4DC /* IACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129BE1CED03B700A7F4DC /* IACategory.m */; };
 		BF8129C21CED03ED00A7F4DC /* IASubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C11CED03ED00A7F4DC /* IASubCategory.m */; };
 		BF8129C51CED054C00A7F4DC /* IASubSubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C41CED054C00A7F4DC /* IASubSubCategory.m */; };
+		BF8129C81CEE51E200A7F4DC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C71CEE51E200A7F4DC /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		BF8129C11CED03ED00A7F4DC /* IASubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubCategory.m; sourceTree = "<group>"; };
 		BF8129C31CED054C00A7F4DC /* IASubSubCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASubSubCategory.h; sourceTree = "<group>"; };
 		BF8129C41CED054C00A7F4DC /* IASubSubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubSubCategory.m; sourceTree = "<group>"; };
+		BF8129C61CEE51E200A7F4DC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		BF8129C71CEE51E200A7F4DC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				BF8129B61CECFEAC00A7F4DC /* Info.plist */,
 				BF8129AE1CECFEAC00A7F4DC /* SmartXMediaChallenge.xcdatamodeld */,
 				BF8129A21CECFEAC00A7F4DC /* Supporting Files */,
+				BF8129C61CEE51E200A7F4DC /* TableViewController.h */,
+				BF8129C71CEE51E200A7F4DC /* TableViewController.m */,
 			);
 			path = SmartXMediaChallenge;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				BF8129B01CECFEAC00A7F4DC /* SmartXMediaChallenge.xcdatamodeld in Sources */,
 				BF8129A71CECFEAC00A7F4DC /* IAAppDelegate.m in Sources */,
 				BF8129A41CECFEAC00A7F4DC /* main.m in Sources */,
+				BF8129C81CEE51E200A7F4DC /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +336,7 @@
 				BF8129BB1CECFEAC00A7F4DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

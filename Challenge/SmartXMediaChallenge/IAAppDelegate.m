@@ -7,6 +7,7 @@
 //
 
 #import "IAAppDelegate.h"
+#import "IACategory.h"
 
 @interface IAAppDelegate ()
 
@@ -17,8 +18,78 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self notificationsArrayFromURLData];
     return YES;
 }
+
+- (NSArray *)notificationsArrayFromURLData {
+    
+    NSMutableArray *notificationsArray = [NSMutableArray array];
+    
+   // NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dev.mobiletv.bg/4P1/kidsvod/json.php?user=veroun1@gmail.com&pass=test1&mode=categories"]];
+    __block NSDictionary *json;
+    __block NSArray *jsonArray;
+    
+    NSString *username = @"test1";
+    NSString *password = @"test1";
+    
+    //HTTP Basic Authentication
+    NSString *authenticationString = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSData *authenticationData = [authenticationString dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authenticationValue = [authenticationData base64Encoding];
+    
+    //Set up your request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dev.mobiletv.bg/4P1/kidsvod/json.php?user=veroun1@gmail.com&pass=test1&mode=categories"]];
+                                                                             
+                                                                             
+[request setValue:[NSString stringWithFormat:@"Basic %@", authenticationValue] forHTTPHeaderField:@"Authorization"];
+
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               json = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:nil];
+                               jsonArray = (NSArray *)[json objectForKey:@"categories"];
+                               NSLog(@"Async JSON: %@", jsonArray);
+                               
+                               
+                               if ([jsonArray isKindOfClass:[NSArray class]]){
+                                   for (NSDictionary *dictionary in jsonArray) {
+                                       //IACategory *category = [IACategory categoryWithName: (NSString *)[dictionary objectForKey:@"category_name"]  andIdCategory:(NSString *)[dictionary objectForKey:@"category_id"]];
+
+                                       //[notificationsArray addObject:category];
+                                       IAAppDelegate *cdHelper = [[IAAppDelegate alloc] init];
+                                       NSManagedObjectContext *context = [cdHelper managedObjectContext];
+                                       
+                                       NSError *error;
+                                       NSManagedObject *pointSet = [NSEntityDescription
+                                                                    insertNewObjectForEntityForName:@"Category"
+                                                                    inManagedObjectContext:context];
+                                       
+                                       NSString *n = [dictionary objectForKey:@"category_id"];
+                                       NSString *m = [dictionary objectForKey:@"category_name"];
+
+                                       [pointSet setValue:n forKey:@"id"];
+                                       [pointSet setValue:m forKey:@"name"];
+                                       
+                                       if (![context save:&error]) {
+                                           NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                                       }
+
+                                   }
+                               }
+                           }];
+    
+    while (!jsonArray) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    }
+    
+    return notificationsArray;
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
