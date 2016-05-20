@@ -7,22 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface IASubCategory : NSObject
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* idBaseCategory;
 @property (strong, nonatomic) NSString* idSubCategory;
-@property (strong, nonatomic) NSString* coverImage;
+@property (strong, nonatomic) UIImage* coverImage;
 
 -(instancetype) initWithName: (NSString *) name
                andIdSubCategory:(NSString *) idSubCategory
            andIdBaseCategory:(NSString *) idBaseCategory
-               andCoverImage:(NSString *) coverImage;
+               andCoverImage:(UIImage *) coverImage;
 
 +(IASubCategory*) subCategoryWithName: (NSString *) name
             andIdSubCategory:(NSString *) idSubCategory
            andIdBaseCategory:(NSString *) idBaseCategory
-               andCoverImage:(NSString *) coverImage;
+               andCoverImage:(UIImage *) coverImage;
 
 @end

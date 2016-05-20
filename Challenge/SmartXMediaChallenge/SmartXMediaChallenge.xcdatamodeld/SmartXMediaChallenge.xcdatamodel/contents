@@ -20,8 +20,8 @@
         <relationship name="subsubcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubCategory" inverseName="mysubsubcategory" inverseEntity="SubCategory" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-432" positionY="-162" width="128" height="88"/>
-        <element name="SubCategory" positionX="-405" positionY="-0" width="128" height="133"/>
-        <element name="SubSubCategory" positionX="-398" positionY="171" width="128" height="103"/>
+        <element name="Category" positionX="-432" positionY="-162" width="128" height="90"/>
+        <element name="SubCategory" positionX="-405" positionY="-0" width="128" height="135"/>
+        <element name="SubSubCategory" positionX="-398" positionY="171" width="128" height="105"/>
     </elements>
 </model>

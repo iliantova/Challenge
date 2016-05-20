@@ -13,7 +13,7 @@
 -(instancetype) initWithName: (NSString *) name
              andIdSubCategory:(NSString *) idSubCategory
             andIdBaseCategory:(NSString *) idBaseCategory
-                andCoverImage:(NSString *) coverImage
+                andCoverImage:(UIImage *) coverImage
 {
     if(self = [super init]){
         self.name = name;
@@ -27,7 +27,7 @@
 +(IASubCategory*) subCategoryWithName: (NSString *) name
                      andIdSubCategory:(NSString *) idSubCategory
                     andIdBaseCategory:(NSString *) idBaseCategory
-                        andCoverImage:(NSString *) coverImage
+                        andCoverImage:(UIImage *) coverImage
 
 {
     return [[IASubCategory alloc] initWithName:name

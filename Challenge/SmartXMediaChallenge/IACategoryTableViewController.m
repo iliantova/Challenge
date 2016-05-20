@@ -1,62 +1,41 @@
 //
-//  TableViewController.m
+//  IACategoryTableViewController.m
 //  SmartXMediaChallenge
 //
-//  Created by Iliyana Antova on 5/19/16.
+//  Created by Iliyana Antova on 5/20/16.
 //  Copyright © 2016 Iliyana Antova. All rights reserved.
 //
 
-#import "TableViewController.h"
-#import "IAAppDelegate.h"
+#import "IACategoryTableViewController.h"
 #import "IACategory.h"
+#import "IACategoryData.h"
+#import "IASubTableViewController.h"
+#import "IASubCategoryData.h"
 
-@interface TableViewController ()
+@interface IACategoryTableViewController ()<UINavigationControllerDelegate>
 
-@property (strong, nonatomic) NSMutableArray *fetchedObjects;
+@property (strong, nonatomic) NSArray *fetchedObjects;
 
 @end
 
-@implementation TableViewController
+@implementation IACategoryTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    IAAppDelegate *cdHelper = [[IAAppDelegate alloc] init];
-    
-    NSManagedObjectContext *context = [cdHelper managedObjectContext];
-    
-    
-    NSError *error;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Category" inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-
-    NSArray *result = [context executeFetchRequest:fetchRequest error:&error];
-    
-    self.fetchedObjects =[[NSMutableArray alloc] init];
-    
-    for (NSManagedObject *info in result) {
-        NSString *n = [info valueForKey:@"name"];
-        NSString *m = [info valueForKey:@"id"];
-        //NSLog(@"NAMEEEEEEEEEEE: %@", n);
-        IACategory *category = [IACategory categoryWithName:n andIdCategory:m];
-        [self.fetchedObjects addObject: category];
-        NSLog(@"CATEGORYYYY: %@", category);
-    }
-         NSLog(@"ARRRAY: %@", self.fetchedObjects);
+    self.title = @"Category";
+    IACategoryData *category = [[IACategoryData alloc]init];
+    self.fetchedObjects =[[NSArray alloc] init];
+    self.fetchedObjects =[category TakeAllCategoryFromDatabase];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
 
@@ -69,20 +48,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *cellM= @"TheCell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellM];
-    
     
     if(cell == nil) {
         cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellM];
     }
     
-    IACategory *category1 = [self.fetchedObjects objectAtIndex: indexPath.row];
+    IACategory *curentCategory = [self.fetchedObjects objectAtIndex: indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Zapfino" size:30.0f];
+    cell.textLabel.text = curentCategory.name;
+        return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
     
-    cell.textLabel.textColor = [UIColor greenColor];
-    cell.textLabel.text = category1.name;
+    IACategory *curentCategory = [self.fetchedObjects objectAtIndex: indexPath.row];
+    NSString *storyBoardId = @"SubCategory";
     
-    return cell;
+    IASubTableViewController *subView = [self.storyboard instantiateViewControllerWithIdentifier:storyBoardId];
+    
+    IASubCategoryData *subHelper= [[IASubCategoryData alloc] init];
+    subView.subCategory = [subHelper TakeSubCategoryByCategoryFromDatabase:curentCategory];
+    
+    [self.navigationController pushViewController:subView animated:YES];
 }
 
 

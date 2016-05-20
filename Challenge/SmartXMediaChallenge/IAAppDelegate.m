@@ -7,7 +7,8 @@
 //
 
 #import "IAAppDelegate.h"
-#import "IACategory.h"
+#import "IACategoryData.h"
+#import "IASubCategoryData.h"
 
 @interface IAAppDelegate ()
 
@@ -28,7 +29,9 @@
     
    // NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dev.mobiletv.bg/4P1/kidsvod/json.php?user=veroun1@gmail.com&pass=test1&mode=categories"]];
     __block NSDictionary *json;
-    __block NSArray *jsonArray;
+    __block NSArray *jsonArrayCategory;
+    __block NSArray *jsonArraySubCategory;
+    __block NSMutableArray *jsonArraySubSub;
     
     NSString *username = @"test1";
     NSString *password = @"test1";
@@ -51,38 +54,34 @@
                                json = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:nil];
-                               jsonArray = (NSArray *)[json objectForKey:@"categories"];
-                               NSLog(@"Async JSON: %@", jsonArray);
+                               jsonArrayCategory = (NSArray *)[json objectForKey:@"categories"];
+                               jsonArraySubCategory = (NSArray *)[json objectForKey:@"subcategories"];
+                               NSLog(@"Async JSON: %@", jsonArraySubCategory);
                                
                                
-                               if ([jsonArray isKindOfClass:[NSArray class]]){
-                                   for (NSDictionary *dictionary in jsonArray) {
-                                       //IACategory *category = [IACategory categoryWithName: (NSString *)[dictionary objectForKey:@"category_name"]  andIdCategory:(NSString *)[dictionary objectForKey:@"category_id"]];
-
-                                       //[notificationsArray addObject:category];
-                                       IAAppDelegate *cdHelper = [[IAAppDelegate alloc] init];
-                                       NSManagedObjectContext *context = [cdHelper managedObjectContext];
-                                       
-                                       NSError *error;
-                                       NSManagedObject *pointSet = [NSEntityDescription
-                                                                    insertNewObjectForEntityForName:@"Category"
-                                                                    inManagedObjectContext:context];
-                                       
-                                       NSString *n = [dictionary objectForKey:@"category_id"];
-                                       NSString *m = [dictionary objectForKey:@"category_name"];
-
-                                       [pointSet setValue:n forKey:@"id"];
-                                       [pointSet setValue:m forKey:@"name"];
-                                       
-                                       if (![context save:&error]) {
-                                           NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                                       }
-
+                               if ([jsonArrayCategory isKindOfClass:[NSArray class]]){
+                                   
+                                   IACategoryData *category = [[IACategoryData alloc]init];
+                                   [category SaveCategoryInDatabaseFromArrayOfObject:jsonArrayCategory];
+                                   
                                    }
+                               
+                               
+                               if ([jsonArraySubCategory isKindOfClass:[NSArray class]]){
+                                   
+                                   IASubCategoryData *subcategory = [[IASubCategoryData alloc]init];
+                                   [subcategory SaveSubCategoryInDatabaseFromArrayOfObject:jsonArraySubCategory];
+                                   
+                                   for (NSDictionary *data in jsonArraySubCategory) {
+                                    NSArray *subSubCategory= [data objectForKey:@"subcategories"];
+                                   }
+                                   
                                }
+
+                               
                            }];
     
-    while (!jsonArray) {
+    while (!jsonArrayCategory && !jsonArraySubCategory) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
     

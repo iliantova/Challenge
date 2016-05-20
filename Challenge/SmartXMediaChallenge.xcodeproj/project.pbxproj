@@ -17,7 +17,11 @@
 		BF8129BF1CED03B700A7F4DC /* IACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129BE1CED03B700A7F4DC /* IACategory.m */; };
 		BF8129C21CED03ED00A7F4DC /* IASubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C11CED03ED00A7F4DC /* IASubCategory.m */; };
 		BF8129C51CED054C00A7F4DC /* IASubSubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C41CED054C00A7F4DC /* IASubSubCategory.m */; };
-		BF8129C81CEE51E200A7F4DC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129C71CEE51E200A7F4DC /* TableViewController.m */; };
+		BF8129CB1CEF4FDB00A7F4DC /* IADataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129CA1CEF4FDB00A7F4DC /* IADataManager.m */; };
+		BF8129CE1CEF5E8F00A7F4DC /* IACategoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129CD1CEF5E8F00A7F4DC /* IACategoryData.m */; };
+		BF8129D11CEF71D400A7F4DC /* IACategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129D01CEF71D400A7F4DC /* IACategoryTableViewController.m */; };
+		BF8129D41CEF81B900A7F4DC /* IASubCategoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129D31CEF81B900A7F4DC /* IASubCategoryData.m */; };
+		BF8129D71CEF92A900A7F4DC /* IASubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8129D61CEF92A900A7F4DC /* IASubTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +42,16 @@
 		BF8129C11CED03ED00A7F4DC /* IASubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubCategory.m; sourceTree = "<group>"; };
 		BF8129C31CED054C00A7F4DC /* IASubSubCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASubSubCategory.h; sourceTree = "<group>"; };
 		BF8129C41CED054C00A7F4DC /* IASubSubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubSubCategory.m; sourceTree = "<group>"; };
-		BF8129C61CEE51E200A7F4DC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		BF8129C71CEE51E200A7F4DC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		BF8129C91CEF4FDB00A7F4DC /* IADataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IADataManager.h; sourceTree = "<group>"; };
+		BF8129CA1CEF4FDB00A7F4DC /* IADataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IADataManager.m; sourceTree = "<group>"; };
+		BF8129CC1CEF5E8F00A7F4DC /* IACategoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACategoryData.h; sourceTree = "<group>"; };
+		BF8129CD1CEF5E8F00A7F4DC /* IACategoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACategoryData.m; sourceTree = "<group>"; };
+		BF8129CF1CEF71D400A7F4DC /* IACategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACategoryTableViewController.h; sourceTree = "<group>"; };
+		BF8129D01CEF71D400A7F4DC /* IACategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACategoryTableViewController.m; sourceTree = "<group>"; };
+		BF8129D21CEF81B900A7F4DC /* IASubCategoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASubCategoryData.h; sourceTree = "<group>"; };
+		BF8129D31CEF81B900A7F4DC /* IASubCategoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubCategoryData.m; sourceTree = "<group>"; };
+		BF8129D51CEF92A900A7F4DC /* IASubTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASubTableViewController.h; sourceTree = "<group>"; };
+		BF8129D61CEF92A900A7F4DC /* IASubTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASubTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,10 @@
 		BF8129A11CECFEAC00A7F4DC /* SmartXMediaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				BF8129D51CEF92A900A7F4DC /* IASubTableViewController.h */,
+				BF8129D61CEF92A900A7F4DC /* IASubTableViewController.m */,
+				BF8129CF1CEF71D400A7F4DC /* IACategoryTableViewController.h */,
+				BF8129D01CEF71D400A7F4DC /* IACategoryTableViewController.m */,
 				BF8129BC1CED034F00A7F4DC /* Model */,
 				BF8129A51CECFEAC00A7F4DC /* IAAppDelegate.h */,
 				BF8129A61CECFEAC00A7F4DC /* IAAppDelegate.m */,
@@ -83,8 +99,6 @@
 				BF8129B61CECFEAC00A7F4DC /* Info.plist */,
 				BF8129AE1CECFEAC00A7F4DC /* SmartXMediaChallenge.xcdatamodeld */,
 				BF8129A21CECFEAC00A7F4DC /* Supporting Files */,
-				BF8129C61CEE51E200A7F4DC /* TableViewController.h */,
-				BF8129C71CEE51E200A7F4DC /* TableViewController.m */,
 			);
 			path = SmartXMediaChallenge;
 			sourceTree = "<group>";
@@ -106,6 +120,12 @@
 				BF8129C11CED03ED00A7F4DC /* IASubCategory.m */,
 				BF8129C31CED054C00A7F4DC /* IASubSubCategory.h */,
 				BF8129C41CED054C00A7F4DC /* IASubSubCategory.m */,
+				BF8129C91CEF4FDB00A7F4DC /* IADataManager.h */,
+				BF8129CA1CEF4FDB00A7F4DC /* IADataManager.m */,
+				BF8129CC1CEF5E8F00A7F4DC /* IACategoryData.h */,
+				BF8129CD1CEF5E8F00A7F4DC /* IACategoryData.m */,
+				BF8129D21CEF81B900A7F4DC /* IASubCategoryData.h */,
+				BF8129D31CEF81B900A7F4DC /* IASubCategoryData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -180,14 +200,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8129D71CEF92A900A7F4DC /* IASubTableViewController.m in Sources */,
+				BF8129D11CEF71D400A7F4DC /* IACategoryTableViewController.m in Sources */,
 				BF8129AA1CECFEAC00A7F4DC /* IAViewController.m in Sources */,
 				BF8129BF1CED03B700A7F4DC /* IACategory.m in Sources */,
+				BF8129D41CEF81B900A7F4DC /* IASubCategoryData.m in Sources */,
 				BF8129C51CED054C00A7F4DC /* IASubSubCategory.m in Sources */,
 				BF8129C21CED03ED00A7F4DC /* IASubCategory.m in Sources */,
 				BF8129B01CECFEAC00A7F4DC /* SmartXMediaChallenge.xcdatamodeld in Sources */,
+				BF8129CE1CEF5E8F00A7F4DC /* IACategoryData.m in Sources */,
 				BF8129A71CECFEAC00A7F4DC /* IAAppDelegate.m in Sources */,
+				BF8129CB1CEF4FDB00A7F4DC /* IADataManager.m in Sources */,
 				BF8129A41CECFEAC00A7F4DC /* main.m in Sources */,
-				BF8129C81CEE51E200A7F4DC /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
